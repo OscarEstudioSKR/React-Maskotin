@@ -1,0 +1,27 @@
+.App {
+  width: 100vw;
+  height: 177.5vw;
+  max-width: 500px;
+  max-height: 887.5px;
+  color: #ffffd2;
+}
+
+.Cabezera {
+  max-width: 100%;
+  height: 15%;
+  background: #aa96da;
+}
+
+.Cuerpo {
+  max-width: 100%;
+  height: 60%;
+  background: #fcbad3;
+}
+
+.Pie {
+  max-width: 100%;
+  height: 25%;
+  background: #aa96da;
+}
+
+/*# sourceMappingURL=app.css.map */

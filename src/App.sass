@@ -1,0 +1,31 @@
+$color0: #ffffd2
+$color1: #aa96da
+$color2: #a8d8ea
+$color3: #fcbad3
+
+$tam-app-x: 100vw
+$tam-app-y: ($tam-app-x*177.5)/100
+$max-whidth: 500px
+
+@mixin estructura-principal($fondo, $porcentaje)
+    max-width: 100%
+    height: $porcentaje
+    background: $fondo
+
+.App
+
+    width: $tam-app-x
+    height: $tam-app-y
+    max-width: $max-whidth
+    max-height: $max-whidth*1.775
+
+    color: $color0
+    
+.Cabezera
+    @include estructura-principal($color1, 15%)
+
+.Cuerpo
+    @include estructura-principal($color3, 60%)
+
+.Pie
+    @include estructura-principal($color1, 25%)
