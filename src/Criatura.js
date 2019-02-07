@@ -5,7 +5,6 @@ import idle1 from './img/idle1.png';
 import idle2 from './img/idle2.png';
 import huevo0 from './img/huevo0.png';
 import huevo00 from './img/huevo00.png';
-import { SyncLoopHook } from 'tapable';
 import huevoC1 from './img/huevoRoto1.png';
 import huevoC2 from './img/huevoRoto2.png';
 import huevoC3 from './img/huevoRoto3.png';
@@ -19,42 +18,13 @@ import huevoC7 from './img/huevoRoto7.png';
 const velAnimacion = 250;
 const probNacimiento = .2;
 
-const maskotin = {
-  nombre: "Maskotin",
-  edad: 0,
-  tam: 1,
-  accion: "Encubando huevo",
-  animList: [idle0,idle2],
-  anim: 0,
-  img: huevo0,
-  animacion: function(){
+let cont = 0;
+const animar = () => cont++;
 
-    if(this.accion == "Naciendo" && this.anim == this.animList.length-1) {
-      this.accion = "Tranquilo";
-      maskotin.anim=0;
-    }  
-
-    if(this.anim<this.animList.length-1){ this.anim ++;
-    }else if(this.accion == "Huevo rompiendose" && this.anim == this.animList.length-1){
-      this.animList=[idle0];
-      this.anim=0;
-      this.accion = "Naciendo";
-      this.edad = this.edad+1;
-      }else{this.anim = 0;}
-
-
-
-
-
-    this.img= this.animList[this.anim];
-
-  },
-
-}
 
 //Bucle
 setInterval(() => {
-  maskotin.animacion();
+  animar();
 }, velAnimacion);
 
 
@@ -63,14 +33,24 @@ class Criatura extends Component {
     constructor(props){
       super(props)
       this.state = {
-        edad: 0
+        cont: 0,
+        nombre: "Maskotin",
+        edad: 0,
+        tam: 1,
+        accion: "Encubando huevo",
+        animList: [idle0,idle2],
+        anim: 0,
+        img: huevo0,
+      }
+
+      let estiloMascota = {
+        display: "none"
       }
 
       setInterval(() => {
         this.setState({ 
-          edad: this.state.edad+1,
+          cont: cont,
         });
-        console.log("Edad: "+this.state.edad);
       }, velAnimacion);
 
    
@@ -80,7 +60,7 @@ class Criatura extends Component {
 
       return (
         <div className="Criatura">
-            <h2>{maskotin.accion}</h2>
+            <h2>{this.state.accion}</h2>
             <fondo><this.Animar /></fondo>
             
         </div>
@@ -88,42 +68,63 @@ class Criatura extends Component {
     }
 
     Animar = ()=>{
-      if(maskotin.accion == "Encubando huevo"){
-        maskotin.animList= [huevo0];
-        if(this.state.edad > 10){
-          maskotin.accion = "Dando pataditas";
-          maskotin.anim=0;
+
+      if(this.state.accion == "Naciendo" && this.state.anim == this.state.animList.length-1) {
+        this.state.accion = "Tranquilo";
+        this.state.anim=0;
+      }  
+  
+      if(this.state.anim<this.state.animList.length-1){ this.state.anim ++;
+      }else if(this.state.accion == "Huevo rompiendose" && this.state.anim == this.state.animList.length-1){
+        this.state.animList=[idle0];
+        this.state.anim=0;
+        this.state.accion = "Naciendo";
+        this.state.edad = this.state.edad+1;
+        }else{this.state.anim = 0;}
+  
+
+      if(this.state.accion == "Encubando huevo"){
+        this.state.animList= [huevo0];
+        if(this.state.cont > 10){
+          this.state.accion = "Dando pataditas";
+          this.state.anim=0;
         }
       }
-      if(maskotin.accion == "Dando pataditas"){
-        maskotin.animList= [huevo0,huevo00];
+      if(this.state.accion == "Dando pataditas"){
+        this.state.animList= [huevo0,huevo00];
 
-        if(this.state.edad > 20){
+        if(this.state.cont > 20){
           if(Math.random()>probNacimiento){
-          maskotin.accion = "Huevo rompiendose";
-          maskotin.anim=0;
+            this.state.accion = "Huevo rompiendose";
+            this.state.anim=0;
           }else {
             this.setState ({edad: 0});
-            maskotin.accion = "Encubando huevo";
+            this.state.accion = "Encubando huevo";
           }
         }
         
-      }else if(maskotin.accion == "Huevo rompiendose"){
-        maskotin.animList= [huevoC1,huevoC2,huevoC3,huevoC3,huevoC3,huevoC3,huevoC4,huevoC4,huevoC5,huevoC6,huevoC6,huevoC7,idle0];
+      }else if(this.state.accion == "Huevo rompiendose"){
+        this.state.animList= [huevoC1,huevoC2,huevoC3,huevoC3,huevoC3,huevoC3,huevoC4,huevoC4,huevoC5,huevoC6,huevoC6,huevoC7,idle0];
 
-      }else if(maskotin.accion == "Naciendo"){
-        maskotin.animList=[idle2,idle2,idle2,idle0,idle1,idle2,idle2,idle0,idle1,idle0,idle1,idle0,idle1,idle0,idle2,idle2];
+      }else if(this.state.accion == "Naciendo"){
+        this.state.animList=[idle2,idle2,idle2,idle0,idle1,idle2,idle2,idle0,idle1,idle0,idle1,idle0,idle1,idle0,idle2,idle2];
 
 
-      }else if(maskotin.accion == "Tranquilo"){
+      }else if(this.state.accion == "Tranquilo"){
         let ran =[
           [idle0,idle1],
           [idle0,idle1,idle0,idle1,idle2],
+          [idle2,idle2]
         ]
-        maskotin.animList= ran[Math.floor(Math.random()*ran.length)];
+        if(Math.random()>0.7){
+          this.state.anim = 0;
+          let numRan = Math.floor(Math.random()*ran.length);
+          this.state.animList= ran[numRan];}
 
       }
-      return <img src={maskotin.img} alt= {maskotin.accion} />
+
+      this.state.img= this.state.animList[this.state.anim];
+      return <img src={this.state.img} alt= {this.state.accion} />
     }
 
   }
