@@ -5,6 +5,7 @@ import Criatura from './Criatura.js';
 class App extends Component {
   constructor(props){
     super(props)
+
   }
   render() {
     return (
@@ -16,6 +17,7 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
 

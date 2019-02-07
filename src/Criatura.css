@@ -1,7 +1,14 @@
-.nombre-titulo {
+.Criatura h2 {
   margin: 0;
   padding: 10px;
   background: #aa96da;
+}
+.Criatura img {
+  height: 57vh;
+  width: 100%;
+  background-image: url("./img/base0.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 /*# sourceMappingURL=Criatura.css.map */

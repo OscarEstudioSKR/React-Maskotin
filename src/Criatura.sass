@@ -1,6 +1,15 @@
+@mixin full
+    height: 57vh
+    width: 100%
+
 .Criatura
 
-.nombre-titulo
-    margin: 0
-    padding: 10px
-    background: #aa96da
+    h2
+        margin: 0
+        padding: 10px
+        background: #aa96da
+    img
+        @include full
+        background-image: url("./img/base0.jpg")
+        background-repeat: no-repeat
+        background-size: 100%
