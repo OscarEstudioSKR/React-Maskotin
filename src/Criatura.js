@@ -57,12 +57,53 @@ import cagando2 from './img/cagando2.png';
 import cagando3 from './img/cagando3.png';
 import cagando4 from './img/cagando4.png';
 import cagando5 from './img/cagando5.png';
+import cagando6 from './img/cagando6.png';
+import cagando7 from './img/cagando7.png';
+import cagando8 from './img/cagando8.png';
+import cagando9 from './img/cagando9.png';
+import cagando10 from './img/cagando10.png';
 
 import comerGalleta0 from './img/comerGalleta0.png';
 import comerGalleta1 from './img/comerGalleta1.png';
 import comerGalleta2 from './img/comerGalleta2.png';
 import comerGalleta3 from './img/comerGalleta3.png';
 import comerGalleta4 from './img/comerGalleta4.png';
+import comiendoCaramelo0 from './img/comiendoCaramelo0.png';
+import comiendoCaramelo1 from './img/comiendoCaramelo1.png';
+import comiendoCaramelo2 from './img/comiendoCaramelo2.png';
+import comiendoCaramelo3 from './img/comiendoCaramelo3.png';
+import comiendoCaramelo4 from './img/comiendoCaramelo4.png';
+import comiendoCaramelo5 from './img/comiendoCaramelo5.png';
+import comiendoCaramelo6 from './img/comiendoCaramelo6.png';
+import comerHelado0 from './img/comerHelado1.png';
+import comerHelado1 from './img/comerHelado1.png';
+import comerHelado2 from './img/comerHelado2.png';
+import comerHelado3 from './img/comerHelado3.png';
+import comerHelado4 from './img/comerHelado4.png';
+import comerHelado5 from './img/comerHelado5.png';
+import medicinaAzul0 from './img/medicinaAzul0.png';
+import medicinaAzul1 from './img/medicinaAzul1.png';
+import medicinaAzul2 from './img/medicinaAzul2.png';
+import medicinaAzul3 from './img/medicinaAzul3.png';
+import medicinaAzul4 from './img/medicinaAzul4.png';
+import medicinaAzul5 from './img/medicinaAzul5.png';
+import medicinaAzul6 from './img/medicinaAzul6.png';
+import medicinaAzul7 from './img/medicinaAzul7.png';
+import medicinaVerde0 from './img/medicinaVerde0.png';
+import medicinaVerde1 from './img/medicinaVerde1.png';
+import medicinaVerde2 from './img/medicinaVerde2.png';
+import medicinaVerde3 from './img/medicinaVerde3.png';
+import medicinaVerde4 from './img/medicinaVerde4.png';
+import medicinaVerde5 from './img/medicinaVerde5.png';
+import medicinaVerde6 from './img/medicinaVerde6.png';
+import medicinaVerde7 from './img/medicinaVerde7.png';
+import medicinaRoja0 from './img/medicinaRoja0.png';
+import medicinaRoja1 from './img/medicinaRoja1.png';
+import medicinaRoja2 from './img/medicinaRoja2.png';
+import medicinaRoja3 from './img/medicinaRoja3.png';
+import medicinaRoja4 from './img/medicinaRoja4.png';
+import medicinaRoja5 from './img/medicinaRoja5.png';
+import medicinaRoja6 from './img/medicinaRoja6.png';
 
 
 const velAnimacion = 250;
@@ -80,6 +121,7 @@ class Criatura extends Component {
       super(props)
       this.state = {
         cont: 0,
+        mensajeInicial: <p>Esperando a que nazca...<br />¿Tienes ya un nombre?</p>,
         nombre: "Maskotin",
 
         edad: 0,
@@ -93,7 +135,7 @@ class Criatura extends Component {
         aburrimiento: 0,
         enfermedad: 0,
         cansancio: 0,
-        cagalera: 100,
+        cagalera: 0,
         
         accion: "Encubando huevo", //Encubando huevo/Tranquilo
         animList: [],
@@ -120,6 +162,7 @@ class Criatura extends Component {
           cansancio: this.state.accion == "Dormido" ? this.state.cansancio-0.5:this.state.cansancio+0.01,
           cagalera: this.state.accion == "Evacuando" && this.state.anim == this.state.animList.length-1 ? 0: this.state.cagalera,
 
+
         }); 
       }, velAnimacion);
    
@@ -143,7 +186,7 @@ class Criatura extends Component {
             <fondo><this.Animar /></fondo>
             <h2>{this.state.accion}</h2> 
             <footer>
-              {this.state.navAbierto ? <this.Navegador />:<p>Esperando a que nazca...<br />¿Tienes ya un nombre?</p>}
+              {this.state.navAbierto ? <this.Navegador />:this.state.mensajeInicial}
             </footer>
             
         </div>
@@ -244,6 +287,11 @@ class Criatura extends Component {
         }
         if(tipo == "Pócima verde"){
           this.setState({
+            accion: "Tomando medicina verde",
+            animList: [medicinaVerde0,medicinaVerde1,medicinaVerde2,medicinaVerde3,medicinaVerde4,medicinaVerde4,medicinaVerde5,medicinaVerde6,medicinaVerde6,medicinaVerde7],
+            mensajeInicial: <p>Por favor...<br />¡REPUGNANTE!</p>,
+            navAbierto: false,
+            anim:0,
             edad: this.state.edad-0.2,
             tam: this.state.tam-0.2,
             hambre: this.state.hambre+20,
@@ -257,6 +305,11 @@ class Criatura extends Component {
         }
         if(tipo == "Pócima roja"){
           this.setState({
+            accion: "Tomando medicina roja",
+            animList: [medicinaRoja0,medicinaRoja1,medicinaRoja1,medicinaRoja2,medicinaRoja3,medicinaRoja4,medicinaRoja5,medicinaRoja6,medicinaRoja5,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3],
+            mensajeInicial: <p>UUUUYYYY!!!<br />Que extraña sensación!</p>,
+            navAbierto: false,
+            anim:0,
             edad: this.state.edad+0.3,
             tam: this.state.tam+0.2,
             hambre: this.state.hambre-10,
@@ -271,6 +324,11 @@ class Criatura extends Component {
         }
         if(tipo == "Pócima azul"){
           this.setState({
+            accion: "Tomando medicina azul",
+            animList: [medicinaAzul0,medicinaAzul1,medicinaAzul2,medicinaAzul3,medicinaAzul4,medicinaAzul5,medicinaAzul6,medicinaAzul4,medicinaAzul7,medicinaAzul7],
+            mensajeInicial: <p>!!!BUAG!!!<br />¡¿Que será esto?!</p>,
+            navAbierto: false,
+            anim:0,
             edad: this.state.edad-0.3,
             calor: this.state.calor-1,
             infelicidad: this.state.infelicidad-30,
@@ -285,7 +343,10 @@ class Criatura extends Component {
           
           this.setState({
             accion: "Comiendo galleta",
-            animList: [comerGalleta0,comerGalleta1,comerGalleta2,comerGalleta3,comerGalleta4,comerGalleta0],
+            animList: [comerGalleta0,comerGalleta1,comerGalleta2,comerGalleta3,comerGalleta4,comerGalleta4],
+            mensajeInicial: <p>!!!GALLETAS!!!<br />¡Ricas galletas!</p>,
+            navAbierto: false,
+            anim:0,
             tam: this.state.tam+0.1,
             hambre: this.state.hambre-60,
             calor: this.state.calor+2,
@@ -297,6 +358,11 @@ class Criatura extends Component {
         }
         if(tipo == "Helado"){
           this.setState({
+            accion: "Comiendo helado",
+            animList: [comerHelado0,comerHelado1,comerHelado2,comerHelado3,comerHelado4,comerHelado5,comerHelado5],
+            mensajeInicial: <p>!Fresquito!<br />¡Muy fresquito!</p>,
+            navAbierto: false,
+            anim:0,
             edad: this.state.edad+0.02,
             hambre: this.state.hambre-2,
             calor: this.state.calor-30,
@@ -309,6 +375,11 @@ class Criatura extends Component {
         }
         if(tipo == "Caramelo"){
           this.setState({
+            accion: "Comiendo caramelo",
+            animList: [comiendoCaramelo0,comiendoCaramelo1,comiendoCaramelo2,comiendoCaramelo3,comiendoCaramelo4,comiendoCaramelo5,comiendoCaramelo6,comiendoCaramelo6],
+            mensajeInicial: <p>!¿Un caramelo?!<br />¡UN CARAMELOOO!</p>,
+            navAbierto: false,
+            anim:0,
             edad: this.state.edad+0.02,
             hambre: this.state.hambre-1,
             infelicidad: this.state.infelicidad-25,
@@ -402,7 +473,7 @@ class Criatura extends Component {
         this.state.animList=[idle2,idle2,idle2,idle0,idle1,idle2,idle2,idle0,idle1,idle0,idle1,idle0,idle1,idle0,idle2,idle2];
 
 
-      }else if(Math.random()>0.7 && this.state.navAbierto==true){
+      }else if(this.state.navAbierto==true){
 
         //Añadir estados
         if(this.state.hambre>=90){ this.cambioAccion("Hambriento", [hambriento0,hambriento1]);}
@@ -411,30 +482,34 @@ class Criatura extends Component {
         else if(this.state.aburrimiento>=90){ this.cambioAccion("Aburrido", [aburrido0,aburrido1]);}
         else if(this.state.enfermedad>=90){ this.cambioAccion("Enfermo", [enfermo0,enfermo0,enfermo1,enfermo1,enfermo1]);}
         else if(this.state.cansancio>=90){ this.cambioAccion("Dormido", [dormir0,dormir0,dormir1,dormir2,dormir2]);}
-        else if(this.state.cagalera>=90){ this.cambioAccion("Evacuando", [cagando0,cagando0,cagando0,cagando1,cagando0,cagando0,cagando2,cagando2,cagando2,cagando3,cagando4,cagando4,cagando5,cagando5,cagando5,cagando5,cagando4]);}
+        else if(this.state.cagalera>=90){ this.cambioAccion("Evacuando", [cagando0,cagando0,cagando0,cagando1,cagando0,cagando0,cagando2,cagando2,cagando2,cagando3,cagando4,cagando4,cagando5,cagando5,cagando5,cagando5,cagando4,cagando5,cagando6,cagando7,cagando8,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9]);}
         else{this.cambioAccion("Tranquilo", [idle0,idle1,idle0,idle1,idle2]);}       
         
 
       
        //Quitar estados
-      if(this.state.hambre<90 && this.accion=="Hambriento"){ this.cambioAccion("Tranquilo");}
-      if(this.state.calor<90 && this.accion=="Acalorado"){  this.cambioAccion("Tranquilo");}
-      if(this.state.infelicidad<90 && this.accion=="Triste"){  this.cambioAccion("Tranquilo");}
-      if(this.state.aburrimiento<90 && this.accion=="Aburrido"){  this.cambioAccion("Tranquilo");}
-      if(this.state.enfermedad<90 && this.accion=="Enfermo"){  this.cambioAccion("Tranquilo");}
-      if(this.state.cansancio<90 && this.accion=="Dormido"){  this.cambioAccion("Tranquilo");}
-      if(this.state.cagalera<90 && this.accion=="Evacuando"){  this.cambioAccion("Tranquilo");}
+      if(this.state.hambre<90 && this.state.accion=="Hambriento"){ this.cambioAccion("Tranquilo");}
+      if(this.state.calor<50 && this.state.accion=="Acalorado"){  this.cambioAccion("Tranquilo");}
+      if(this.state.infelicidad<50 && this.state.accion=="Triste"){  this.cambioAccion("Tranquilo");}
+      if(this.state.aburrimiento<90 && this.state.accion=="Aburrido"){  this.cambioAccion("Tranquilo");}
+      if(this.state.enfermedad<50 && this.state.accion=="Enfermo"){  this.cambioAccion("Tranquilo");}
+      if(this.state.cansancio<10 && this.state.accion=="Dormido"){  this.cambioAccion("Tranquilo");}
+      if(this.state.cagalera<50 && this.state.accion=="Evacuando"){  this.cambioAccion("Tranquilo");}
       }
+
+      let a = this.state.accion;
+      if((a=="Comiendo galleta" || a=="Comiendo caramelo"|| a=="Comiendo helado" || a=="Tomando medicina azul"|| a=="Tomando medicina verde"|| a=="Tomando medicina roja")
+      && this.state.anim == this.state.animList.length-1){ this.state.navAbierto=true; this.cambioAccion("Tranquilo");this.state.anim=0; }
 
       this.state.img= this.state.animList[this.state.anim];
       return <img src={this.state.img} alt= {this.state.accion} />
       
     }
 
-    cambioAccion (tipo,arr=[idle0,idle1]){
-      this.state.animList= arr;
+    cambioAccion (tipo,arr=[idle0,idle1,idle0,idle1,idle2]){
+ 
       this.state.accion = tipo;
-      //this.state.anim=0;
+      this.state.animList= arr;
     }
 
   }
