@@ -104,6 +104,26 @@ import medicinaRoja3 from './img/medicinaRoja3.png';
 import medicinaRoja4 from './img/medicinaRoja4.png';
 import medicinaRoja5 from './img/medicinaRoja5.png';
 import medicinaRoja6 from './img/medicinaRoja6.png';
+import cometa0 from './img/cometa0.png';
+import cometa1 from './img/cometa1.png';
+import cometa2 from './img/cometa2.png';
+import cometa3 from './img/cometa3.png';
+import cometa4 from './img/cometa4.png';
+import jugarPelota0 from './img/jugarPelota0.png';
+import jugarPelota1 from './img/jugarPelota1.png';
+import jugarPelota2 from './img/jugarPelota2.png';
+import jugarPelota3 from './img/jugarPelota3.png';
+import jugarPelota4 from './img/jugarPelota4.png';
+import jugarPelota5 from './img/jugarPelota5.png';
+import jugarPelota6 from './img/jugarPelota6.png';
+import jugarPelota7 from './img/jugarPelota7.png';
+import jugarPelota8 from './img/jugarPelota8.png';
+import jugarPelota9 from './img/jugarPelota9.png';
+import jugarPelota10 from './img/jugarPelota10.png';
+import leerLibro0 from './img/leerLibro0.png';
+import leerLibro1 from './img/leerLibro1.png';
+import leerLibro2 from './img/leerLibro2.png';
+import leerLibro3 from './img/leerLibro3.png';
 
 
 const velAnimacion = 250;
@@ -158,10 +178,29 @@ class Criatura extends Component {
           cont: cont,
           edad: this.state.edad+0.0001,
           hambre: this.state.hambre+0.01,
-          aburrimiento: this.state.aburrimiento+0.02,
+          aburrimiento: this.state.aburrimiento+0.2,
           cansancio: this.state.accion == "Dormido" ? this.state.cansancio-0.5:this.state.cansancio+0.01,
           cagalera: this.state.accion == "Evacuando" && this.state.anim == this.state.animList.length-1 ? 0: this.state.cagalera,
 
+          //Minimos y maximos
+          obesidad: this.state.obesidad<0 ? 0:this.state.obesidad,
+          obesidad: this.state.obesidad>100 ? 100:this.state.obesidad,
+          inteligencia: this.state.inteligencia<0 ? 0:this.state.inteligencia,
+          inteligencia: this.state.inteligencia>100 ? 100:this.state.inteligencia,
+          hambre: this.state.hambre<0 ? 0:this.state.hambre,
+          hambre: this.state.hambre>100 ? 100:this.state.hambre,
+          calor: this.state.calor<0 ? 0:this.state.calor,
+          calor: this.state.calor>100 ? 100:this.state.calor,
+          infelicidad: this.state.infelicidad<0 ? 0:this.state.infelicidad,
+          infelicidad: this.state.infelicidad>100 ? 100:this.state.infelicidad,
+          aburrimiento: this.state.aburrimiento<0 ? 0:this.state.aburrimiento,
+          aburrimiento: this.state.aburrimiento>100 ? 100:this.state.aburrimiento,
+          enfermedad: this.state.enfermedad<0 ? 0:this.state.enfermedad,
+          enfermedad: this.state.enfermedad>100 ? 100:this.state.enfermedad,
+          cansancio: this.state.cansancio<0 ? 0:this.state.cansancio,
+          cansancio: this.state.cansancio>100 ? 100:this.state.cansancio,
+          cagalera: this.state.cagalera<0 ? 0:this.state.cagalera,
+          cagalera: this.state.cagalera>100 ? 100:this.state.cagalera,
 
         }); 
       }, velAnimacion);
@@ -249,6 +288,11 @@ class Criatura extends Component {
       let ejecutarAccion = (tipo) => {
         if(tipo == "Balón"){
           this.setState({
+            accion: "Jugando con pelota",
+            animList: [jugarPelota0,jugarPelota1,jugarPelota2,jugarPelota3,jugarPelota4,jugarPelota5,jugarPelota6,jugarPelota7,jugarPelota8,jugarPelota9,jugarPelota10,jugarPelota10],
+            mensajeInicial: <p>Gran tiro!!<br />Pero no podras vencer</p>,
+            navAbierto: false,
+            anim:0,
             tam: this.state.tam+0.1,
             hambre: this.state.hambre+40,
             calor: this.state.calor+25,
@@ -262,6 +306,11 @@ class Criatura extends Component {
         }
         if(tipo == "Cometa"){
           this.setState({
+            accion: "Jugando con cometa",
+            animList: [cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0],
+            mensajeInicial: <p>Salto, salto...<br />Con mi cometa!!</p>,
+            navAbierto: false,
+            anim:0,
             hambre: this.state.hambre+15,
             calor: this.state.calor+10,
             infelicidad: this.state.infelicidad-1,
@@ -273,12 +322,17 @@ class Criatura extends Component {
         }
         if(tipo == "Libro"){
           this.setState({
+            accion: "Leyendo un cuento",
+            animList: [leerLibro0,leerLibro0,leerLibro1,leerLibro2,leerLibro2,leerLibro2,leerLibro1,leerLibro1,leerLibro1,leerLibro2,leerLibro3,leerLibro3,leerLibro3,leerLibro2,leerLibro1,leerLibro1,leerLibro3,leerLibro3,leerLibro1,leerLibro1,leerLibro0,leerLibro0,],
+            mensajeInicial: <p>¿Y que es un gorila?<br />¿Yo soy un gorila?</p>,
+            navAbierto: false,
+            anim:0,
             tam: this.state.tam-0.05,
             hambre: this.state.hambre+5,
             calor: this.state.calor-5,
             infelicidad: this.state.infelicidad-5,
             obesidad: this.state.obesidad+3,
-            aburrimiento: this.state.aburrimiento+15,
+            aburrimiento: this.state.aburrimiento+20,
             enfermedad: this.state.enfermedad-2,
             inteligencia: this.state.inteligencia+1,
             cansancio: this.state.cansancio+15,
@@ -296,7 +350,7 @@ class Criatura extends Component {
             tam: this.state.tam-0.2,
             hambre: this.state.hambre+20,
             calor: this.state.calor+25,
-            infelicidad: this.state.infelicidad+10,
+            infelicidad: this.state.infelicidad+20,
             enfermedad: this.state.enfermedad-25,
             inteligencia: this.state.inteligencia-0.1,
             cansancio: this.state.cansancio+40,
@@ -306,7 +360,7 @@ class Criatura extends Component {
         if(tipo == "Pócima roja"){
           this.setState({
             accion: "Tomando medicina roja",
-            animList: [medicinaRoja0,medicinaRoja1,medicinaRoja1,medicinaRoja2,medicinaRoja3,medicinaRoja4,medicinaRoja5,medicinaRoja6,medicinaRoja5,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3],
+            animList: [medicinaRoja0,medicinaRoja1,medicinaRoja1,medicinaRoja2,medicinaRoja3,medicinaRoja4,medicinaRoja5,medicinaRoja6,medicinaRoja5,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3],
             mensajeInicial: <p>UUUUYYYY!!!<br />Que extraña sensación!</p>,
             navAbierto: false,
             anim:0,
@@ -314,7 +368,7 @@ class Criatura extends Component {
             tam: this.state.tam+0.2,
             hambre: this.state.hambre-10,
             calor: this.state.calor-20,
-            infelicidad: this.state.infelicidad-2,
+            infelicidad: this.state.infelicidad+10,
             obesidad: this.state.obesidad+5,
             enfermedad: this.state.enfermedad+5,
             inteligencia: this.state.inteligencia-0.1,
@@ -332,9 +386,9 @@ class Criatura extends Component {
             edad: this.state.edad-0.3,
             calor: this.state.calor-1,
             infelicidad: this.state.infelicidad-30,
-            obesidad: this.state.obesidad-1,
+            obesidad: this.state.obesidad-2,
             enfermedad: this.state.enfermedad+1,
-            inteligencia: this.state.inteligencia-1,
+            inteligencia: this.state.inteligencia+0.5,
             cansancio: this.state.cansancio-30,
             cagalera: 0
           })
@@ -488,17 +542,18 @@ class Criatura extends Component {
 
       
        //Quitar estados
-      if(this.state.hambre<90 && this.state.accion=="Hambriento"){ this.cambioAccion("Tranquilo");}
+      if(this.state.hambre<50 && this.state.accion=="Hambriento"){ this.cambioAccion("Tranquilo");}
       if(this.state.calor<50 && this.state.accion=="Acalorado"){  this.cambioAccion("Tranquilo");}
       if(this.state.infelicidad<50 && this.state.accion=="Triste"){  this.cambioAccion("Tranquilo");}
-      if(this.state.aburrimiento<90 && this.state.accion=="Aburrido"){  this.cambioAccion("Tranquilo");}
+      if(this.state.aburrimiento<60 && this.state.accion=="Aburrido"){  this.cambioAccion("Tranquilo");}
       if(this.state.enfermedad<50 && this.state.accion=="Enfermo"){  this.cambioAccion("Tranquilo");}
       if(this.state.cansancio<10 && this.state.accion=="Dormido"){  this.cambioAccion("Tranquilo");}
       if(this.state.cagalera<50 && this.state.accion=="Evacuando"){  this.cambioAccion("Tranquilo");}
       }
 
       let a = this.state.accion;
-      if((a=="Comiendo galleta" || a=="Comiendo caramelo"|| a=="Comiendo helado" || a=="Tomando medicina azul"|| a=="Tomando medicina verde"|| a=="Tomando medicina roja")
+      if((a=="Comiendo galleta" || a=="Comiendo caramelo"|| a=="Comiendo helado" || a=="Tomando medicina azul"|| a=="Tomando medicina verde"|| a=="Tomando medicina roja"
+      || a=="Jugando con cometa"|| a=="Jugando con pelota"|| a=="Leyendo un cuento")
       && this.state.anim == this.state.animList.length-1){ this.state.navAbierto=true; this.cambioAccion("Tranquilo");this.state.anim=0; }
 
       this.state.img= this.state.animList[this.state.anim];
