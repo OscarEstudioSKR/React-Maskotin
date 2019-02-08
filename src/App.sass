@@ -7,25 +7,11 @@ $tam-app-x: 100vw
 $tam-app-y: ($tam-app-x*177.5)/100
 $max-whidth: 500px
 
-@mixin estructura-principal($fondo, $porcentaje)
-    max-width: 100%
-    height: $porcentaje
-    background: $fondo
-
 .App
-
     width: $tam-app-x
     height: $tam-app-y
     max-width: $max-whidth
     max-height: $max-whidth*1.775
-
     color: $color0
     
-.Cabezera
-    @include estructura-principal($color1, 10%)
 
-.Cuerpo
-    @include estructura-principal($color3, 65%)
-
-.Pie
-    @include estructura-principal($color1, 25%)

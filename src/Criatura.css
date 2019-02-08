@@ -1,13 +1,51 @@
-.Criatura h2 {
+.Criatura {
+  width: 100%;
+  height: 100%;
+  background: #a8d8ea;
   margin: 0;
-  padding: 10px;
+  padding: 0;
+  color: #ffffd2;
+  max-width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
+.Criatura header {
+  width: 100%;
+  height: 8%;
   background: #aa96da;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.Criatura header div {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+}
+.Criatura header div p {
+  align-self: center;
+}
+.Criatura header button {
+  background: none;
+  border-style: none;
+}
+.Criatura h1 {
+  width: 100%;
+  height: 8%;
+  background: #aa96da;
+  margin: 0;
+  padding: 0;
   text-align: center;
-  font-size: 1em;
+  font-size: 2em;
 }
 .Criatura fondo {
-  height: 57vh;
   width: 100%;
+  height: 55%;
+  background: none;
+  margin: 0;
+  padding: 0;
   background-image: url("./img/base0.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
@@ -15,12 +53,63 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  bottom: 15vh;
 }
 .Criatura fondo img {
   height: 31.35vh;
   width: 55%;
   padding: 3vh;
+}
+.Criatura h2 {
+  width: 100%;
+  height: 7%;
+  background: #a8d8ea;
+  margin: 0;
+  padding: 0;
+  color: #aa96da;
+  text-align: center;
+  font-size: 2em;
+  padding-top: 3%;
+}
+.Criatura footer {
+  width: 100%;
+  height: 20%;
+  background: #aa96da;
+  margin: 0;
+  padding: 0;
+}
+.Criatura footer p {
+  text-align: center;
+  font-size: 2em;
+  color: #fcbad3;
+}
+.Criatura footer div {
+  width: 100%;
+  height: 100%;
+  background: none;
+  margin: 0;
+  padding: 0;
+  border-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Criatura footer div .botonAccion {
+  width: 100%;
+  height: 100%;
+  background: none;
+  margin: 0;
+  padding: 0;
+  width: 22%;
+  height: auto;
+  border-style: none;
+  padding: 2%;
+}
+.Criatura footer div .imaBoton {
+  width: 100%;
+  height: 100%;
+  background: none;
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=Criatura.css.map */
