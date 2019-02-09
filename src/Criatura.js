@@ -126,11 +126,13 @@ import leerLibro3 from './img/leerLibro3.png';
 
 const velAnimacion = 250;  //ms
 const probNacimiento = .2;
+
 const styleImg = {
   height: '31.35vh',
-  width: '55%',
-  padding: '3vh',
+  width: 55,
+  padding: '4vh',
 }
+
 
 //Bucle
 let cont = 0;
@@ -148,7 +150,7 @@ class Criatura extends Component {
         nombre: "Maskotin",
 
         edad: 0,
-        tam: 1,
+        tam: 0,
         obesidad: 0,
         inteligencia: 0,
 
@@ -169,9 +171,10 @@ class Criatura extends Component {
         dinero: 10,
       }
 
+
       setInterval(() => { 
 
-        console.log(["Hambre: "+this.state.hambre,"Enfermedad: "+this.state.enfermedad,
+        console.log(["Tamaño: "+this.state.tam,"Hambre: "+this.state.hambre,"Enfermedad: "+this.state.enfermedad,
         "Aburrimiento: "+this.state.aburrimiento, "Obesidad: "+this.state.obesidad, "Inteligencia: "+this.state.inteligencia, "Calor: "+this.state.calor,
         "Infelicidad: "+this.state.infelicidad,"Cansancio: "+this.state.cansancio,"Cagalera: "+this.state.cagalera,"Edad: "+this.state.edad]);
         
@@ -180,6 +183,7 @@ class Criatura extends Component {
           dinero: this.state.accion == "Tranquilo" ? this.state.dinero+0.02:this.state.dinero+0.0005,
 
           //Minimos y maximos + cambios constantes
+          tam: this.state.tam<0 ? 0: this.state.tam>70 ? 70:this.state.tam,
           edad: this.state.edad<0 ? 0: this.state.edad>100 ? 100:this.state.edad+0.01,
           obesidad: this.state.obesidad<0 ? 0: this.state.obesidad>100 ? 100:this.state.obesidad,
           inteligencia: this.state.inteligencia<0 ? 0: this.state.inteligencia>100 ? 100:this.state.inteligencia,
@@ -190,12 +194,6 @@ class Criatura extends Component {
           enfermedad: this.state.enfermedad<0 ? 0:this.state.enfermedad>100 ? 100:this.state.accion == "Dormido" ? this.state.enfermedad-0.001:this.state.enfermedad+0.01,
           cagalera: this.state.cagalera<0 ? 0:this.state.cagalera>100 ? 100:this.state.accion == "Evacuando" && this.state.anim == this.state.animList.length-1 ? 0: this.state.cagalera,
           cansancio: this.state.cansancio>100 ? 100 : this.state.cansancio<0 ? 0: this.state.accion == "Dormido" ? this.state.cansancio>20 ? this.state.cansancio-3 : this.state.cansancio+(this.state.obesidad/100)+0.05 : this.state.cansancio+(this.state.obesidad/100)+0.05,
-          
-            
-              
-                
-
-
 
         }); 
       }, velAnimacion);
@@ -203,8 +201,6 @@ class Criatura extends Component {
     }
     
     render() {
-      let mas = <h4>+</h4>;
-
 
       return (
         <div className="Criatura">
@@ -309,7 +305,7 @@ class Criatura extends Component {
           })
         }
         if(tipo == "Cometa"){
-          ejecutarAccion2("Jugando con cometa",[cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0]);
+          ejecutarAccion2("Jugando con cometa",[cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0,cometa1,cometa2,cometa3,cometa4,cometa0,cometa0]);
           this.setState({       
             mensajeInicial: <p>Salto, salto...<br />Con mi cometa!!</p>,
             hambre: this.state.hambre+15,
@@ -536,7 +532,7 @@ class Criatura extends Component {
       && this.state.anim == this.state.animList.length-1){ this.state.navAbierto=true; this.cambioAccion();this.state.anim=0; }
 
       this.state.img= this.state.animList[this.state.anim];
-      return <img  style={styleImg} src={this.state.img} alt= {this.state.accion} />
+      return <img  style={{width: styleImg.width*(1+((this.state.tam/100)))+"%", padding: styleImg.padding, margin: (-((7*this.state.tam)/100))+"vh"}} src={this.state.img} alt= {this.state.accion} />
       
     }
 
