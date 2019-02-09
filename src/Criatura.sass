@@ -29,14 +29,27 @@ $color3: #a8d8ea
             font-size: 2em
             p
                 align-self: center
+                display: flex
+                flex-flow: column no-wrap
         button
             background: none
             border-style: none
+        button:focus
+            outline-style: none
             
     h1
         @include full($color2, 8%)
         text-align: center
         font-size: 2em
+        input
+            @include full(none, 100%)
+            color: $color0
+            border-style: none
+            text-align: center
+            font-size: 1em
+        input:focus
+            outline-style: none
+
 
     fondo
         @include full(none, 55%)
@@ -79,6 +92,8 @@ $color3: #a8d8ea
                 height: auto
                 border-style: none
                 padding: 2%
+            .botonAccion:focus
+                outline-style: none
             .imaBoton
                 @include full(none, 100%)
                 
