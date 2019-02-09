@@ -151,6 +151,7 @@ class Criatura extends Component {
 
         edad: 0,
         tam: 0,
+        tamPlus: 0,
         obesidad: 0,
         inteligencia: 0,
 
@@ -183,8 +184,8 @@ class Criatura extends Component {
           dinero: this.state.accion == "Tranquilo" ? this.state.dinero+0.02:this.state.dinero+0.0005,
 
           //Minimos y maximos + cambios constantes
-          tam: this.state.tam<0 ? 0: this.state.tam>70 ? 70:this.state.tam,
-          edad: this.state.edad<0 ? 0: this.state.edad>100 ? 100:this.state.edad+0.01,
+          tam: this.state.tam<0 ? 0: this.state.tam>70 ? 70:this.state.tamPlus+(this.state.edad/100),
+          edad: this.state.edad<0 ? 0: this.state.edad+0.01,
           obesidad: this.state.obesidad<0 ? 0: this.state.obesidad>100 ? 100:this.state.obesidad,
           inteligencia: this.state.inteligencia<0 ? 0: this.state.inteligencia>100 ? 100:this.state.inteligencia,
           hambre: this.state.hambre<0 ? 0:this.state.hambre>100 ? 100: this.state.hambre+0.03,
@@ -255,27 +256,27 @@ class Criatura extends Component {
 
       if(this.state.idMenu == 1){
         if(pos==1){imaBoton = flecha; fun = ()=> this.state.idMenu=0;}
-        if(pos==2){imaBoton = diversion1; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Cometa")):false}
-        if(pos==3){imaBoton = diversion2; fun = ()=> m > 0 ? (gastar(),ejecutarAccion("Balón")):false}
-        if(pos==4){imaBoton = diversion3; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Libro")):false}      
+        if(pos==2){imaBoton = diversion1; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Cometa")):false}
+        if(pos==3){imaBoton = diversion2; fun = ()=> m > 1 ? (gastar(),ejecutarAccion("Balón")):false}
+        if(pos==4){imaBoton = diversion3; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Libro")):false}      
       }
       if(this.state.idMenu == 2){
         if(pos==1){imaBoton = flecha; fun = ()=> this.state.idMenu=0;}
-        if(pos==2){imaBoton = salud1; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Pócima verde")):false}
-        if(pos==3){imaBoton = salud2; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Pócima roja")):false}
-        if(pos==4){imaBoton = salud3; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Pócima azul")):false} 
+        if(pos==2){imaBoton = salud1; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Pócima verde")):false}
+        if(pos==3){imaBoton = salud2; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Pócima roja")):false}
+        if(pos==4){imaBoton = salud3; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Pócima azul")):false} 
       }
       if(this.state.idMenu == 3){
         if(pos==1){imaBoton = flecha; fun = ()=> this.state.idMenu=0;}
-        if(pos==2){imaBoton = comida1; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Galleta")):false}
-        if(pos==3){imaBoton = comida2; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Helado")):false}
-        if(pos==4){imaBoton = comida3; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Caramelo")):false}  
+        if(pos==2){imaBoton = comida1; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Galleta")):false}
+        if(pos==3){imaBoton = comida2; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Helado")):false}
+        if(pos==4){imaBoton = comida3; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Caramelo")):false}  
       }
       if(this.state.idMenu == 4){
         if(pos==1){imaBoton = flecha; fun = ()=> this.state.idMenu=0;}
-        if(pos==2){imaBoton = dedo1; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Ok")):false}
-        if(pos==3){imaBoton = dedo2; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Mal")):false}
-        if(pos==4){imaBoton = dedo3; fun = ()=> m > 0 ? (gastar(), ejecutarAccion("Paz")):false}  
+        if(pos==2){imaBoton = dedo1; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Ok")):false}
+        if(pos==3){imaBoton = dedo2; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Mal")):false}
+        if(pos==4){imaBoton = dedo3; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Paz")):false}  
       }
 
       var ejecutarAccion2 = (accionT, arrT) => {
@@ -293,7 +294,7 @@ class Criatura extends Component {
           ejecutarAccion2("Jugando con pelota",[jugarPelota0,jugarPelota1,jugarPelota2,jugarPelota3,jugarPelota4,jugarPelota5,jugarPelota6,jugarPelota7,jugarPelota8,jugarPelota9,jugarPelota10,jugarPelota10]);
           this.setState({
             mensajeInicial: <p>Gran tiro!!<br />Pero no podras vencer</p>,
-            tam: this.state.tam+0.1,
+            tamPlus: this.state.tamPlus+0.1,
             hambre: this.state.hambre+40,
             calor: this.state.calor+25,
             infelicidad: this.state.infelicidad-2,
@@ -322,7 +323,7 @@ class Criatura extends Component {
           ejecutarAccion2("Leyendo un cuento",[leerLibro0,leerLibro0,leerLibro1,leerLibro2,leerLibro2,leerLibro2,leerLibro1,leerLibro1,leerLibro1,leerLibro2,leerLibro3,leerLibro3,leerLibro3,leerLibro2,leerLibro1,leerLibro1,leerLibro3,leerLibro3,leerLibro1,leerLibro1,leerLibro0,leerLibro0]);
           this.setState({
             mensajeInicial: <p>¿Y que es un gorila?<br />¿Yo soy un gorila?</p>,
-            tam: this.state.tam-0.05,
+            tamPlus: this.state.tamPlus+0.05,
             hambre: this.state.hambre+5,
             calor: this.state.calor-5,
             infelicidad: this.state.infelicidad-5,
@@ -339,11 +340,11 @@ class Criatura extends Component {
           this.setState({
             mensajeInicial: <p>Por favor...<br />¡REPUGNANTE!</p>,
             edad: this.state.edad-0.2,
-            tam: this.state.tam-0.2,
+            tamPlus: this.state.tamPlus-0.2,
             hambre: this.state.hambre+20,
             calor: this.state.calor+25,
             infelicidad: this.state.infelicidad+20,
-            enfermedad: this.state.enfermedad-25,
+            enfermedad: this.state.enfermedad-30,
             inteligencia: this.state.inteligencia-0.1,
             cansancio: this.state.cansancio+40,
             cagalera: this.state.cagalera+30,
@@ -353,8 +354,8 @@ class Criatura extends Component {
           ejecutarAccion2("Tomando medicina roja",[medicinaRoja0,medicinaRoja1,medicinaRoja1,medicinaRoja2,medicinaRoja3,medicinaRoja4,medicinaRoja5,medicinaRoja6,medicinaRoja5,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3,medicinaRoja3]);
           this.setState({
             mensajeInicial: <p>UUUUYYYY!!!<br />Que extraña sensación!</p>,
-            edad: this.state.edad+0.3,
-            tam: this.state.tam+0.2,
+            edad: this.state.edad+5,
+            tamPlus: this.state.tamPlus+1,
             hambre: this.state.hambre-10,
             calor: this.state.calor-20,
             infelicidad: this.state.infelicidad+10,
@@ -369,7 +370,7 @@ class Criatura extends Component {
           ejecutarAccion2("Tomando medicina azul",[medicinaAzul0,medicinaAzul1,medicinaAzul2,medicinaAzul3,medicinaAzul4,medicinaAzul5,medicinaAzul6,medicinaAzul4,medicinaAzul7,medicinaAzul7]);
           this.setState({
             mensajeInicial: <p>!!!BUAG!!!<br />¡¿Que será esto?!</p>,
-            edad: this.state.edad-0.3,
+            edad: this.state.edad-10,
             calor: this.state.calor-1,
             infelicidad: this.state.infelicidad-30,
             obesidad: this.state.obesidad-2,
@@ -383,7 +384,7 @@ class Criatura extends Component {
           ejecutarAccion2("Comiendo galleta",[comerGalleta0,comerGalleta1,comerGalleta2,comerGalleta3,comerGalleta4,comerGalleta4]);
           this.setState({
             mensajeInicial: <p>!!!GALLETAS!!!<br />¡Ricas galletas!</p>,
-            tam: this.state.tam+0.1,
+            tamPlus: this.state.tamPlus+0.3,
             hambre: this.state.hambre-60,
             calor: this.state.calor+2,
             infelicidad: this.state.infelicidad-1,
@@ -415,7 +416,7 @@ class Criatura extends Component {
             infelicidad: this.state.infelicidad-25,
             obesidad: this.state.obesidad+5,
             aburrimiento: this.state.aburrimiento-10,
-            enfermedad: this.state.enfermedad+1,
+            enfermedad: this.state.enfermedad+5,
             cagalera: this.state.cagalera+4,
           })
         }
@@ -433,7 +434,7 @@ class Criatura extends Component {
         if(tipo == "Mal"){
           this.setState({
             edad: this.state.edad+0.1,
-            tam: this.state.tam-0.1,
+            tamPlus: this.state.tamPlus-0.1,
             hambre: this.state.hambre-5,
             calor: this.state.calor+15,
             infelicidad: this.state.infelicidad+25,
@@ -506,7 +507,7 @@ class Criatura extends Component {
         //Añadir estados
         
         if(this.state.accion != "Dormido"){
-          if(this.state.cagalera>=90){ this.cambioAccion("Evacuando", [cagando0,cagando0,cagando0,cagando1,cagando0,cagando0,cagando2,cagando2,cagando2,cagando3,cagando4,cagando4,cagando5,cagando5,cagando5,cagando5,cagando4,cagando5,cagando6,cagando7,cagando8,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9]);}
+          if(this.state.cagalera>=90){ this.state.tamPlus -=2; this.cambioAccion("Evacuando", [cagando0,cagando0,cagando0,cagando1,cagando0,cagando0,cagando2,cagando2,cagando2,cagando3,cagando4,cagando4,cagando5,cagando5,cagando5,cagando5,cagando4,cagando5,cagando6,cagando7,cagando8,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9]);}
           else if(this.state.calor>=90){ this.cambioAccion("Acalorado", [calor0,calor1,calor2,calor3]);}
           else if(this.state.cansancio>=90){ this.cambioAccion("Dormido", [dormir0,dormir0,dormir1,dormir2,dormir2]);}
           else if(this.state.enfermedad>=90){ this.state.cansancio += 1; this.state.cagalera +=0.5; this.cambioAccion("Enfermo", [enfermo0,enfermo0,enfermo1,enfermo1,enfermo1]);}
