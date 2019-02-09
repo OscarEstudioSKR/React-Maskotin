@@ -507,7 +507,7 @@ class Criatura extends Component {
         //Añadir estados
         
         if(this.state.accion != "Dormido"){
-          if(this.state.cagalera>=90){ this.state.tamPlus -=2; this.cambioAccion("Evacuando", [cagando0,cagando0,cagando0,cagando1,cagando0,cagando0,cagando2,cagando2,cagando2,cagando3,cagando4,cagando4,cagando5,cagando5,cagando5,cagando5,cagando4,cagando5,cagando6,cagando7,cagando8,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9]);}
+          if(this.state.cagalera>=90){ this.state.tamPlus -=0.01; this.cambioAccion("Evacuando", [cagando0,cagando0,cagando0,cagando1,cagando0,cagando0,cagando2,cagando2,cagando2,cagando3,cagando4,cagando4,cagando5,cagando5,cagando5,cagando5,cagando4,cagando5,cagando6,cagando7,cagando8,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9,cagando10,cagando9]);}
           else if(this.state.calor>=90){ this.cambioAccion("Acalorado", [calor0,calor1,calor2,calor3]);}
           else if(this.state.cansancio>=90){ this.cambioAccion("Dormido", [dormir0,dormir0,dormir1,dormir2,dormir2]);}
           else if(this.state.enfermedad>=90){ this.state.cansancio += 1; this.state.cagalera +=0.5; this.cambioAccion("Enfermo", [enfermo0,enfermo0,enfermo1,enfermo1,enfermo1]);}
