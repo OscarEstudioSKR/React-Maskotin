@@ -122,10 +122,35 @@ import leerLibro0 from './img/leerLibro0.png';
 import leerLibro1 from './img/leerLibro1.png';
 import leerLibro2 from './img/leerLibro2.png';
 import leerLibro3 from './img/leerLibro3.png';
+import represalia0 from './img/represalia0.png';
+import represalia1 from './img/represalia1.png';
+import represalia2 from './img/represalia2.png';
+import represalia3 from './img/represalia3.png';
+import recibiendoAmor0 from './img/recibiendoAmor0.png';
+import recibiendoAmor1 from './img/recibiendoAmor1.png';
+import recibiendoAmor2 from './img/recibiendoAmor2.png';
+import recibiendoAmor3 from './img/recibiendoAmor3.png';
+import respuestaNoEntender0 from './img/respuestaNoEntender0.png';
+import respuestaNoEntender1 from './img/respuestaNoEntender1.png';
+import respuestaHelado0 from './img/respuestaHelado0.png';
+import respuestaHelado1 from './img/respuestaHelado1.png';
+import respuestaPelota0 from './img/respuestaPelota0.png';
+import respuestaPelota1 from './img/respuestaPelota1.png';
+import respuestaCaramelo0 from './img/respuestaCaramelo0.png';
+import respuestaCaramelo1 from './img/respuestaCaramelo1.png';
+import respuestaGalleta0 from './img/respuestaCaramelo0.png';
+import respuestaGalleta1 from './img/respuestaCaramelo1.png';
+import respuestaCometa0 from './img/respuestaCometa0.png';
+import respuestaCometa1 from './img/respuestaCometa1.png';
+import respuestaMedicina0 from './img/respuestaMedicina0.png';
+import respuestaMedicina1 from './img/respuestaMedicina1.png';
+import respuestaLeer0 from './img/respuestaLeer0.png';
+import respuestaLeer1 from './img/respuestaLeer1.png';
 
 
 const velAnimacion = 250;  //ms
 const probNacimiento = .2;
+var menuAbierto = false;
 
 const styleImg = {
   height: '31.35vh',
@@ -205,25 +230,37 @@ class Criatura extends Component {
 
       return (
         <div className="Criatura">
-            <header>
-              <div>
-                <img src={moneda} />
-                <p>{this.state.accion=="Tranquilo" ? Math.floor(this.state.dinero)+"^":Math.floor(this.state.dinero)}</p>
-              </div>
-              
-              <button>
-                <img src={botonMenu}></img>
-              </button>
-            </header>
-
-            <h1 ><input name="nombre" placeholder={this.state.nombre}></input></h1>
-            <fondo><this.Animar /></fondo>
-            <h2>{this.state.accion}</h2> 
-            <footer>
-              {this.state.navAbierto ? <this.Navegador />:this.state.mensajeInicial}
-            </footer>
+          {menuAbierto && 
+          <nav className = "menu-options">
+            <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP botonSuperior abierto">
+                <img src={botonMenu} style={{alignSelf: 'flex-end'}}></img>
+            </button>
+            <div className="opc">
+              <button onClick={()=>{}} className="boton-menuP abierto">Reiniciar</button>
+              <button onClick={()=>{}} className="boton-menuP abierto">Guardar</button>
+              <button onClick={()=>{}} className="boton-menuP abierto">Salir</button>
+            </div>
             
-        </div>
+          </nav>}
+          <header>
+              
+            <div>
+              <img src={moneda} />
+              <p>{this.state.accion=="Tranquilo" ? Math.floor(this.state.dinero)+"^":Math.floor(this.state.dinero)}</p>
+            </div>
+              
+            <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP">
+              <img src={botonMenu}></img>
+            </button>
+          </header>
+
+          <h1 ><input name="nombre" placeholder={this.state.nombre}></input></h1>
+          <fondo><this.Animar /></fondo>
+          <h2>{this.state.accion}</h2> 
+          <footer>
+            {this.state.navAbierto ? <this.Navegador />:this.state.mensajeInicial}
+          </footer>       
+      </div>
       );
     }
 
@@ -274,9 +311,9 @@ class Criatura extends Component {
       }
       if(this.state.idMenu == 4){
         if(pos==1){imaBoton = flecha; fun = ()=> this.state.idMenu=0;}
-        if(pos==2){imaBoton = dedo1; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Ok")):false}
-        if(pos==3){imaBoton = dedo2; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Mal")):false}
-        if(pos==4){imaBoton = dedo3; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Paz")):false}  
+        if(pos==2){imaBoton = dedo1; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Preguntar")):false}
+        if(pos==3){imaBoton = dedo2; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Represalia")):false}
+        if(pos==4){imaBoton = dedo3; fun = ()=> m > 1 ? (gastar(), ejecutarAccion("Mimos")):false}  
       }
 
       var ejecutarAccion2 = (accionT, arrT) => {
@@ -420,35 +457,89 @@ class Criatura extends Component {
             cagalera: this.state.cagalera+4,
           })
         }
-        if(tipo == "Ok"){
+        if(tipo == "Preguntar"){
+          let ran = Math.floor(Math.random()*4);
+          if(this.state.inteligencia > Math.floor(Math.random()*5)){
+
+            switch(ran){
+              case 0: 
+                if(this.state.calor>40){
+                  ejecutarAccion2("Comunicándose",[respuestaHelado0,respuestaHelado1,respuestaHelado0,respuestaHelado1,respuestaHelado0,respuestaHelado1,respuestaHelado0,respuestaHelado1,respuestaHelado0,respuestaHelado1]);
+                  this.setState({mensajeInicial: <p>¡Siiii! ¡Quiero!<br />¡¡¡Helado!!!</p>,});}
+                else{
+                  ejecutarAccion2("Comunicándose",[respuestaCometa0,respuestaCometa1,respuestaCometa0,respuestaCometa1,respuestaCometa0,respuestaCometa1,respuestaCometa0,respuestaCometa1,respuestaCometa0,respuestaCometa1]);
+                  this.setState({mensajeInicial: <p>Saltemos<br />con la cometa!!!</p>,});}
+                break;
+              case 1: 
+                if(this.state.infelicidad>40){
+                  ejecutarAccion2("Comunicándose",[respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1]);
+                  this.setState({mensajeInicial: <p>¡Siiii! ¡Quiero!<br />¡¡¡Caramelo!!!</p>,});}
+                else{
+                  ejecutarAccion2("Comunicándose",[respuestaGalleta0,respuestaGalleta1,respuestaGalleta0,respuestaGalleta1,respuestaGalleta0,respuestaGalleta1,respuestaGalleta0,respuestaGalleta1,respuestaGalleta0,respuestaGalleta1]);
+                  this.setState({mensajeInicial: <p>¡¡Comer!!<br />Comer y crecer</p>,});}
+                break;
+              case 2: 
+                if(this.state.obesidad>40){
+                  ejecutarAccion2("Comunicándose",[respuestaPelota0,respuestaPelota1,respuestaPelota0,respuestaPelota1,respuestaPelota0,respuestaPelota1,respuestaPelota0,respuestaPelota1,respuestaPelota0,respuestaPelota1]);
+                  this.setState({mensajeInicial: <p>¡¡¡Juguemos<br />a la pelota!!!</p>,});}
+                else{
+                  ejecutarAccion2("Comunicándose",[respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1,respuestaCaramelo0,respuestaCaramelo1]);
+                  this.setState({mensajeInicial: <p>¡Siiii! ¡Quiero!<br />¡¡¡Caramelo!!!</p>,});}
+                break; 
+              case 3: 
+                if(this.state.enfermedad>40){
+                  ejecutarAccion2("Comunicándose",[respuestaMedicina0,respuestaMedicina1,respuestaMedicina0,respuestaMedicina1,respuestaMedicina0,respuestaMedicina1,respuestaMedicina0,respuestaMedicina1,respuestaMedicina0,respuestaMedicina1]);
+                  this.setState({mensajeInicial: <p>No muy bien<br />¡Yo malito!</p>,});}
+                else{
+                  ejecutarAccion2("Comunicándose",[respuestaLeer0,respuestaLeer1,respuestaLeer0,respuestaLeer1,respuestaLeer0,respuestaLeer1,respuestaLeer0,respuestaLeer1,respuestaLeer0,respuestaLeer1]);
+                  this.setState({mensajeInicial: <p>¡Leamos!<br />me gusta aprender</p>,});}
+                break;
+              default:
+                ejecutarAccion2("Comunicándose",[respuestaNoEntender0,respuestaNoEntender1,respuestaNoEntender0,respuestaNoEntender1,respuestaNoEntender0,respuestaNoEntender1,respuestaNoEntender0,respuestaNoEntender1]);
+                this.setState({mensajeInicial: <p>¡No entiendo!<br />{this.state.nombre} no tan listo</p>});
+                break;
+            }
+          }else{
+            ejecutarAccion2("Comunicándose",[respuestaNoEntender0,respuestaNoEntender1,respuestaNoEntender0,respuestaNoEntender1,respuestaNoEntender0,respuestaNoEntender1,respuestaNoEntender0,respuestaNoEntender1]);
+            this.setState({mensajeInicial: <p>¡No entiendo!<br />{this.state.nombre} no tan listo</p>});
+          }
+          
           this.setState({
+            
             calor: this.state.calor+2,
-            infelicidad: this.state.infelicidad-5,
-            obesidad: this.state.obesidad-0.1,
-            aburrimiento: this.state.aburrimiento+1,
-            inteligencia: this.state.inteligencia+0.01,
-            cansancio: this.state.cansancio-5,
+            infelicidad: this.state.infelicidad-2,
+            aburrimiento: this.state.aburrimiento+3,
+            inteligencia: this.state.inteligencia+0.1,
+            cansancio: this.state.cansancio+5,
             cagalera: this.state.cagalera+2,
           })
         }
-        if(tipo == "Mal"){
+
+        if(tipo == "Represalia"){
+          ejecutarAccion2("Recibiendo represalia",[represalia0,represalia1,represalia0,represalia1,represalia2,represalia0,represalia1,represalia3,represalia3,represalia0,represalia1,represalia0,represalia1,represalia2]);
           this.setState({
-            edad: this.state.edad+0.1,
+            mensajeInicial: <p>¡Esta bien!<br />Me portaré mejor...</p>,
+            edad: this.state.edad+1,
             tamPlus: this.state.tamPlus-0.1,
             hambre: this.state.hambre-5,
             calor: this.state.calor+15,
             infelicidad: this.state.infelicidad+25,
-            obesidad: this.state.obesidad-2,
+            obesidad: this.state.obesidad-4,
             aburrimiento: this.state.aburrimiento+40,
             enfermedad: this.state.enfermedad+0.1,
-            inteligencia: this.state.inteligencia+0.5,
-            cansancio: this.state.cansancio-5,
+            inteligencia: this.state.inteligencia+1,
+            cansancio: this.state.cansancio-10,
             cagalera: this.state.cagalera+25,
           })
         }
-        if(tipo == "Paz"){
+        if(tipo == "Mimos"){
+          ejecutarAccion2("Recibiendo mimos",[recibiendoAmor0,recibiendoAmor1,recibiendoAmor2,recibiendoAmor3,recibiendoAmor0,recibiendoAmor1,recibiendoAmor2,recibiendoAmor3,recibiendoAmor0,recibiendoAmor1,recibiendoAmor2,recibiendoAmor3]);
           this.setState({
+            mensajeInicial: <p>¡¡Besos si!!<br />Quiero más besos</p>,
             calor: this.state.calor+5,
+            infelicidad: this.state.infelicidad-10,
+            hambre: this.state.hambre-5,
+            obesidad: this.state.obesidad+2,
           })
         }
 
@@ -529,7 +620,7 @@ class Criatura extends Component {
       //Acciones que bloquean la pantalla
       let a = this.state.accion;
       if((a=="Comiendo galleta" || a=="Comiendo caramelo"|| a=="Comiendo helado" || a=="Tomando medicina azul"|| a=="Tomando medicina verde"|| a=="Tomando medicina roja"
-      || a=="Jugando con cometa"|| a=="Jugando con pelota"|| a=="Leyendo un cuento")
+      || a=="Jugando con cometa"|| a=="Jugando con pelota"|| a=="Leyendo un cuento"|| a=="Recibiendo represalia"|| a=="Recibiendo mimos"|| a=="Comunicándose")
       && this.state.anim == this.state.animList.length-1){ this.state.navAbierto=true; this.cambioAccion();this.state.anim=0; }
 
       this.state.img= this.state.animList[this.state.anim];

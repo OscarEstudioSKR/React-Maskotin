@@ -10,6 +10,53 @@ $color3: #a8d8ea
     margin: 0
     padding: 0
     
+.menu-options
+    position: absolute
+    overflow: hidden
+    width: 70%
+    height: 100%
+    background: $color3
+    align-self: flex-end
+    display: flex
+    flex-flow: row wrap
+    align-items: flex-start
+    animation-duration: 2s
+    animtion-name: agrandar
+    animation-fill-mode: forwards
+    animation-iteration-count: 1
+
+@keyframes agrandar
+    0%
+        width: 0%
+        background: $color1
+    100%
+        width: 100%
+        background: $color3
+
+
+.botonSuperior
+    display: flex
+    justify-content: flex-end 
+
+.boton-menuP
+    background: none
+    border-style: none 
+.boton-menuP:focus
+     outline-style: none 
+
+       
+.opc 
+    padding-bottom: 150%
+    padding-left: 5%
+
+
+.abierto
+    height: 6%
+    width: 100%
+    color: $color0
+    font-size: 2em
+    display: flex
+    align-items: flex-start
 
 .Criatura
     @include full($color3, 100%)
@@ -31,11 +78,6 @@ $color3: #a8d8ea
                 align-self: center
                 display: flex
                 flex-flow: column no-wrap
-        button
-            background: none
-            border-style: none
-        button:focus
-            outline-style: none
             
     h1
         @include full($color2, 8%)
