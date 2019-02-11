@@ -198,7 +198,7 @@ class Criatura extends Component {
         anim: 0,
         img: huevo0,
         idMenu: 0,
-        dinero: 1,
+        dinero: 10,
       }
 
       if(gameOver== false){
@@ -253,7 +253,7 @@ class Criatura extends Component {
         anim: 0,
         img: huevo0,
         idMenu: 0,
-        dinero: 2,
+        dinero: 10,
       })
       menuAbierto = false
       gameOver = false
