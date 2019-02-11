@@ -1,7 +1,7 @@
 {
-  "main.css": "/React-Maskotin/static/css/main.c506ef66.chunk.css",
-  "main.js": "/React-Maskotin/static/js/main.056145d2.chunk.js",
-  "main.js.map": "/React-Maskotin/static/js/main.056145d2.chunk.js.map",
+  "main.css": "/React-Maskotin/static/css/main.336dbbff.chunk.css",
+  "main.js": "/React-Maskotin/static/js/main.fd74c244.chunk.js",
+  "main.js.map": "/React-Maskotin/static/js/main.fd74c244.chunk.js.map",
   "static/js/1.87f73e08.chunk.js": "/React-Maskotin/static/js/1.87f73e08.chunk.js",
   "static/js/1.87f73e08.chunk.js.map": "/React-Maskotin/static/js/1.87f73e08.chunk.js.map",
   "runtime~main.js": "/React-Maskotin/static/js/runtime~main.1dd0641a.js",
@@ -125,8 +125,8 @@
   "static/media/jugarPelota8.png": "/React-Maskotin/static/media/jugarPelota8.cdb13e8d.png",
   "static/media/jugarPelota9.png": "/React-Maskotin/static/media/jugarPelota9.b3f10031.png",
   "static/media/Criatura.css": "/React-Maskotin/static/media/base0.0c989837.jpg",
-  "static/css/main.c506ef66.chunk.css.map": "/React-Maskotin/static/css/main.c506ef66.chunk.css.map",
+  "static/css/main.336dbbff.chunk.css.map": "/React-Maskotin/static/css/main.336dbbff.chunk.css.map",
   "index.html": "/React-Maskotin/index.html",
-  "precache-manifest.c5319a35b5bcce3893400d85e13fc286.js": "/React-Maskotin/precache-manifest.c5319a35b5bcce3893400d85e13fc286.js",
+  "precache-manifest.963580c06d9984d9f716b3dd121daf5b.js": "/React-Maskotin/precache-manifest.963580c06d9984d9f716b3dd121daf5b.js",
   "service-worker.js": "/React-Maskotin/service-worker.js"
 }

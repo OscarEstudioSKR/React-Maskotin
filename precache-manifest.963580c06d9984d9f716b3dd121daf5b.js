@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "056145d236d9c8bc7184",
-    "url": "/React-Maskotin/static/css/main.c506ef66.chunk.css"
+    "revision": "fd74c2444a1c4915969a",
+    "url": "/React-Maskotin/static/css/main.336dbbff.chunk.css"
   },
   {
-    "revision": "056145d236d9c8bc7184",
-    "url": "/React-Maskotin/static/js/main.056145d2.chunk.js"
+    "revision": "fd74c2444a1c4915969a",
+    "url": "/React-Maskotin/static/js/main.fd74c244.chunk.js"
   },
   {
     "revision": "87f73e082d9946b7972d",
@@ -492,7 +492,7 @@ self.__precacheManifest = [
     "url": "/React-Maskotin/static/media/base0.0c989837.jpg"
   },
   {
-    "revision": "ced3672a5a56a7e891fe0cd7cdf1426f",
+    "revision": "ee139560e5800fd015b4272d30841e7b",
     "url": "/React-Maskotin/index.html"
   }
 ];
