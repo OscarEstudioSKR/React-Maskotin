@@ -149,9 +149,10 @@ import respuestaLeer1 from './img/respuestaLeer1.png';
 
 
 const velAnimacion = 250;  //ms
-const probNacimiento = .2;
+const probNacimiento = .8;
 var menuAbierto = false;
 var gameOver = false;
+var puntuacion = 0;
 
 const styleImg = {
   /*height: '31.35vh',*/
@@ -176,6 +177,7 @@ class Criatura extends Component {
       super(props)
       this.state = {
         cont: 0,
+        contTranquilo: 0,
         mensajeInicial: <p>Esperando a que nazca...<br />¿Tienes ya un nombre?</p>,
         nombre: "Maskotin",
 
@@ -227,6 +229,10 @@ class Criatura extends Component {
   
           }); 
         }, velAnimacion);
+
+  
+
+        
       }
       
    
@@ -234,6 +240,7 @@ class Criatura extends Component {
     reiniciar(){
       this.setState({ 
         cont: 0,
+        contTranquilo: 0,
         mensajeInicial: <p>Esperando a que nazca...<br />Quizas esta vez...</p>,
         nombre: "Maskotin",
         edad: 0,
@@ -255,12 +262,15 @@ class Criatura extends Component {
         idMenu: 0,
         dinero: 10,
       })
-      menuAbierto = false
-      gameOver = false
+      menuAbierto = false;
+      gameOver = false;
+      puntuacion = 0;
 
     }
     render() {
       if(this.state.dinero < 1 && this.state.accion != "Tranquilo" && this.state.accion != "Dormido"){ gameOver=true;}
+      if(this.state.accion=="Tranquilo"){this.state.contTranquilo++;}
+      if (this.state.contTranquilo > 30){puntuacion+=2; this.state.contTranquilo=0;}
 
       return (
 
@@ -268,25 +278,28 @@ class Criatura extends Component {
 
           {gameOver && <this.GameOver />} 
           {(menuAbierto && gameOver==false) && 
-          <nav className = "menu-options">
-            <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP botonSuperior abierto">
-                <img src={botonMenu} style={{alignSelf: 'flex-end'}}></img>
-            </button>
-            <div className="opc">
-              <button onClick={()=>{this.reiniciar()}} className="boton-menuP abierto">Reiniciar</button>
-              <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Guardar</button>
-              <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Continuar</button>
-            </div>
-            
-          </nav>
+            <nav className = "menu-options">
+              <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP botonSuperior abierto">
+                  <img src={botonMenu} style={{alignSelf: 'flex-end'}}></img>
+              </button>
+              <div className="opc">
+                <button onClick={()=>{this.reiniciar()}} className="boton-menuP abierto">Reiniciar</button>
+                <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Guardar</button>
+                <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Continuar</button>
+              </div>
+              
+            </nav>
           }
           <header>
               
             <div>
               <img src={moneda} />
-              <p>{this.state.accion=="Tranquilo" ? Math.floor(this.state.dinero)+"^":Math.floor(this.state.dinero)}</p>
+              {this.state.dinero<4 ? <p className="parpadeo fijo">{Math.floor(this.state.dinero)}</p>: 
+              this.state.accion=="Tranquilo" ? <p className="subidon fijo">{Math.floor(this.state.dinero)}</p>:<p className="fijo">{Math.floor(this.state.dinero)}</p>}
             </div>
-              
+            <div>
+              <p>{Math.floor(puntuacion)} Pts</p>
+            </div>  
             <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP">
               <img src={botonMenu}></img>
             </button>
@@ -308,7 +321,8 @@ class Criatura extends Component {
       return(
         <div className="GameOver">
           <h2>Game Over</h2>
-          <p>Sin dinero tu mascota no va a sobrevivir. La comisión de mascotas galáctica te ha quitado a {this.state.nombre}.</p>
+          <p>Sin dinero tu mascota no va a sobrevivir. La comisión de mascotas galáctica te ha quitado a {this.state.nombre}.<br /><br />
+          PUNTUACIÓN: {puntuacion}</p>
           <button onClick={()=>this.reiniciar()}>Nueva mascota</button>
         </div>
         
@@ -331,7 +345,9 @@ class Criatura extends Component {
       let pos = props.pos;
       let imaBoton = iconoFelicidad;
       var fun = "";
-      let gastar = ()=> this.state.dinero --;
+      let gastar = ()=> {
+        this.state.dinero --;
+        puntuacion += 5;}
 
 
       if(this.state.idMenu == 0){
