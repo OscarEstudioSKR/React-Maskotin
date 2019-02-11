@@ -154,7 +154,8 @@ var menuAbierto = false;
 var gameOver = false;
 
 const styleImg = {
-  height: '31.35vh',
+  /*height: '31.35vh',*/
+  height: '100vh',
   width: 55,
   padding: '4vh',
 }
