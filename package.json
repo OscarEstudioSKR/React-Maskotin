@@ -2,7 +2,7 @@
   "name": "personajes_project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://oscarestudioskr.github.io/React-Maskotin/",
+  "homepage": "https://OscarEstudioSKR/React-Maskotin/",
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
