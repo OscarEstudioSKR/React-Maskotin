@@ -264,7 +264,7 @@ class Criatura extends Component {
             <div className="opc">
               <button onClick={()=>{this.reiniciar()}} className="boton-menuP abierto">Reiniciar</button>
               <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Guardar</button>
-              <button onClick={()=>{this.reiniciar()}} className="boton-menuP abierto">Salir</button>
+              <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Continuar</button>
             </div>
             
           </nav>}
