@@ -151,6 +151,7 @@ import respuestaLeer1 from './img/respuestaLeer1.png';
 const velAnimacion = 250;  //ms
 const probNacimiento = .2;
 var menuAbierto = false;
+var gameOver = false;
 
 const styleImg = {
   height: '31.35vh',
@@ -161,9 +162,12 @@ const styleImg = {
 
 //Bucle
 let cont = 0;
-setInterval(() => {
-  cont++;
-}, velAnimacion);
+if(gameOver==false){
+  setInterval(() => {
+    cont++;
+  }, velAnimacion);
+}
+
 
 
 class Criatura extends Component {
@@ -193,36 +197,37 @@ class Criatura extends Component {
         anim: 0,
         img: huevo0,
         idMenu: 0,
-        navAbierto: false,
-        dinero: 10,
+        dinero: 1,
       }
 
+      if(gameOver== false){
+        setInterval(() => { 
 
-      setInterval(() => { 
-
-        console.log(["Tamaño: "+this.state.tam,"Hambre: "+this.state.hambre,"Enfermedad: "+this.state.enfermedad,
-        "Aburrimiento: "+this.state.aburrimiento, "Obesidad: "+this.state.obesidad, "Inteligencia: "+this.state.inteligencia, "Calor: "+this.state.calor,
-        "Infelicidad: "+this.state.infelicidad,"Cansancio: "+this.state.cansancio,"Cagalera: "+this.state.cagalera,"Edad: "+this.state.edad]);
-        
-        this.setState({ 
-          cont: cont,
-          dinero: this.state.accion == "Tranquilo" ? this.state.dinero+0.02:this.state.dinero+0.0005,
-
-          //Minimos y maximos + cambios constantes
-          tam: this.state.tam<0 ? 0: this.state.tam>70 ? 70:this.state.tamPlus+(this.state.edad/100),
-          edad: this.state.edad<0 ? 0: this.state.edad+0.01,
-          obesidad: this.state.obesidad<0 ? 0: this.state.obesidad>100 ? 100:this.state.obesidad,
-          inteligencia: this.state.inteligencia<0 ? 0: this.state.inteligencia>100 ? 100:this.state.inteligencia,
-          hambre: this.state.hambre<0 ? 0:this.state.hambre>100 ? 100: this.state.hambre+0.03,
-          calor: this.state.calor<0 ? 0:this.state.calor>100 ? 100:this.state.calor,
-          infelicidad: this.state.infelicidad<0 ? 0:this.state.infelicidad>100 ? 100:this.state.infelicidad+0.01,
-          aburrimiento: this.state.aburrimiento<0 ? 0:this.state.aburrimiento>100 ? 100: this.state.aburrimiento+0.2,
-          enfermedad: this.state.enfermedad<0 ? 0:this.state.enfermedad>100 ? 100:this.state.accion == "Dormido" ? this.state.enfermedad-0.001:this.state.enfermedad+0.01,
-          cagalera: this.state.cagalera<0 ? 0:this.state.cagalera>100 ? 100:this.state.accion == "Evacuando" && this.state.anim == this.state.animList.length-1 ? 0: this.state.cagalera,
-          cansancio: this.state.cansancio>100 ? 100 : this.state.cansancio<0 ? 0: this.state.accion == "Dormido" ? this.state.cansancio>20 ? this.state.cansancio-3 : this.state.cansancio+(this.state.obesidad/100)+0.05 : this.state.cansancio+(this.state.obesidad/100)+0.05,
-
-        }); 
-      }, velAnimacion);
+          console.log(["Tamaño: "+this.state.tam,"Hambre: "+this.state.hambre,"Enfermedad: "+this.state.enfermedad,
+          "Aburrimiento: "+this.state.aburrimiento, "Obesidad: "+this.state.obesidad, "Inteligencia: "+this.state.inteligencia, "Calor: "+this.state.calor,
+          "Infelicidad: "+this.state.infelicidad,"Cansancio: "+this.state.cansancio,"Cagalera: "+this.state.cagalera,"Edad: "+this.state.edad]);
+          
+          this.setState({ 
+            cont: cont,
+            dinero: this.state.accion == "Tranquilo" ? this.state.dinero+0.02:this.state.dinero+0.0005,
+  
+            //Minimos y maximos + cambios constantes
+            tam: this.state.tam<0 ? 0: this.state.tam>70 ? 70:this.state.tamPlus+(this.state.edad/100),
+            edad: this.state.edad<0 ? 0: this.state.edad+0.01,
+            obesidad: this.state.obesidad<0 ? 0: this.state.obesidad>100 ? 100:this.state.obesidad,
+            inteligencia: this.state.inteligencia<0 ? 0: this.state.inteligencia>100 ? 100:this.state.inteligencia,
+            hambre: this.state.hambre<0 ? 0:this.state.hambre>100 ? 100: this.state.hambre+0.03,
+            calor: this.state.calor<0 ? 0:this.state.calor>100 ? 100:this.state.calor,
+            infelicidad: this.state.infelicidad<0 ? 0:this.state.infelicidad>100 ? 100:this.state.infelicidad+0.01,
+            aburrimiento: this.state.aburrimiento<0 ? 0:this.state.aburrimiento>100 ? 100: this.state.aburrimiento+0.2,
+            enfermedad: this.state.enfermedad<0 ? 0:this.state.enfermedad>100 ? 100:this.state.accion == "Dormido" ? this.state.enfermedad-0.001:this.state.enfermedad+0.01,
+            cagalera: this.state.cagalera<0 ? 0:this.state.cagalera>100 ? 100:this.state.accion == "Evacuando" && this.state.anim == this.state.animList.length-1 ? 0: this.state.cagalera,
+            cansancio: this.state.cansancio>100 ? 100 : this.state.cansancio<0 ? 0: this.state.accion == "Dormido" ? this.state.cansancio>20 ? this.state.cansancio-3 : this.state.cansancio+(this.state.obesidad/100)+0.05 : this.state.cansancio+(this.state.obesidad/100)+0.05,
+  
+          }); 
+        }, velAnimacion);
+      }
+      
    
     }
     reiniciar(){
@@ -247,16 +252,21 @@ class Criatura extends Component {
         anim: 0,
         img: huevo0,
         idMenu: 0,
-        navAbierto: false,
-        dinero: 10,
+        dinero: 2,
       })
       menuAbierto = false
+      gameOver = false
+
     }
     render() {
+      if(this.state.dinero < 1 && this.state.accion != "Tranquilo" && this.state.accion != "Dormido"){ gameOver=true;}
 
       return (
+
         <div className="Criatura">
-          {menuAbierto && 
+
+          {gameOver && <this.GameOver />} 
+          {(menuAbierto && gameOver==false) && 
           <nav className = "menu-options">
             <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP botonSuperior abierto">
                 <img src={botonMenu} style={{alignSelf: 'flex-end'}}></img>
@@ -267,7 +277,8 @@ class Criatura extends Component {
               <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Continuar</button>
             </div>
             
-          </nav>}
+          </nav>
+          }
           <header>
               
             <div>
@@ -286,9 +297,20 @@ class Criatura extends Component {
           <footer>
             {this.state.navAbierto ? <this.Navegador />:this.state.mensajeInicial}
           </footer>
-           
+          } 
                
       </div>
+      );
+    }
+    GameOver = ()=>{
+      gameOver = true;
+      return(
+        <div className="GameOver">
+          <h2>Game Over</h2>
+          <p>Sin dinero tu mascota no va a sobrevivir. La comisión de mascotas galáctica te ha quitado a {this.state.nombre}.</p>
+          <button onClick={()=>this.reiniciar()}>Nueva mascota</button>
+        </div>
+        
       );
     }
 
