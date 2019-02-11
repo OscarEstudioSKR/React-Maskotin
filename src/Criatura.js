@@ -225,7 +225,33 @@ class Criatura extends Component {
       }, velAnimacion);
    
     }
-    
+    reiniciar(){
+      this.setState({ 
+        cont: 0,
+        mensajeInicial: <p>Esperando a que nazca...<br />Quizas esta vez...</p>,
+        nombre: "Maskotin",
+        edad: 0,
+        tam: 0,
+        tamPlus: 0,
+        obesidad: 0,
+        inteligencia: 0,
+        hambre: 50,
+        calor: 50,
+        infelicidad: 50,
+        aburrimiento: 50,
+        enfermedad: 50,
+        cansancio: 50,
+        cagalera: 50, 
+        accion: "Encubando huevo",
+        animList: [],
+        anim: 0,
+        img: huevo0,
+        idMenu: 0,
+        navAbierto: false,
+        dinero: 10,
+      })
+      menuAbierto = false
+    }
     render() {
 
       return (
@@ -236,9 +262,9 @@ class Criatura extends Component {
                 <img src={botonMenu} style={{alignSelf: 'flex-end'}}></img>
             </button>
             <div className="opc">
-              <button onClick={()=>{}} className="boton-menuP abierto">Reiniciar</button>
-              <button onClick={()=>{}} className="boton-menuP abierto">Guardar</button>
-              <button onClick={()=>{}} className="boton-menuP abierto">Salir</button>
+              <button onClick={()=>{this.reiniciar()}} className="boton-menuP abierto">Reiniciar</button>
+              <button onClick={()=>{menuAbierto=!menuAbierto;}} className="boton-menuP abierto">Guardar</button>
+              <button onClick={()=>{this.reiniciar()}} className="boton-menuP abierto">Salir</button>
             </div>
             
           </nav>}
@@ -259,7 +285,9 @@ class Criatura extends Component {
           <h2>{this.state.accion}</h2> 
           <footer>
             {this.state.navAbierto ? <this.Navegador />:this.state.mensajeInicial}
-          </footer>       
+          </footer>
+           
+               
       </div>
       );
     }
