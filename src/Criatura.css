@@ -8,7 +8,15 @@
   margin: 0;
   padding: 0;
   display: inline-block;
-  animation: 0.3s agrandar 1;
+  -webkit-animation: 0.3s agrandar 1;
+          animation: 0.3s agrandar 1;
+}
+
+@-webkit-keyframes agrandar {
+  0% {
+    opacity: 0%;
+    left: 100%;
+  }
 }
 
 @keyframes agrandar {
@@ -25,10 +33,19 @@
   background: #fcbad3;
   margin: 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 2em;
 }
 .GameOver p {
@@ -51,8 +68,12 @@
 }
 
 .botonSuperior {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .boton-menuP {
@@ -74,8 +95,12 @@
   width: 100%;
   color: #ffffd2;
   font-size: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .Criatura {
@@ -90,9 +115,15 @@
   color: #ffffd2;
   max-width: 100%;
   min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column wrap;
-  align-content: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
 }
 .Criatura header {
   width: 100%;
@@ -100,19 +131,33 @@
   background: #aa96da;
   margin: 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .Criatura header div {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 2em;
 }
 .Criatura header div p {
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column no-wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column no-wrap;
+          flex-flow: column no-wrap;
 }
 .Criatura h1 {
   width: 100%;
@@ -147,9 +192,15 @@
   background-repeat: no-repeat;
   background-size: 100%;
   display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 .Criatura h2 {
   width: 100%;
@@ -181,9 +232,15 @@
   margin: 0;
   padding: 0;
   border-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .Criatura footer div .botonAccion {
   width: 100%;
@@ -209,7 +266,14 @@
 
 .parpadeo {
   color: #f79bff;
-  animation: 0.7s parpadear infinite;
+  -webkit-animation: 0.7s parpadear infinite;
+          animation: 0.7s parpadear infinite;
+}
+
+@-webkit-keyframes parpadear {
+  70% {
+    color: #aa96da;
+  }
 }
 
 @keyframes parpadear {
@@ -219,7 +283,14 @@
 }
 .subidon {
   color: #a0ff9b;
-  animation: 0.7s subidon infinite;
+  -webkit-animation: 0.7s subidon infinite;
+          animation: 0.7s subidon infinite;
+}
+
+@-webkit-keyframes subidon {
+  70% {
+    font-size: 1.3em;
+  }
 }
 
 @keyframes subidon {
@@ -232,5 +303,3 @@
   left: 100%;
   bottom: -40%;
 }
-
-/*# sourceMappingURL=Criatura.css.map */
